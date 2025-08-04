@@ -2,6 +2,89 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Gradient text effect */
+.text-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+    0% {
+        background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+    100% {
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card hover effects */
+.card {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+}
+
+/* Typing animation */
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+.typing-text {
+    border-right: 2px solid #3b82f6;
+    animation: blink 1s infinite;
+}
+
+/* Skill icons hover effect */
+.skill-icon {
+    transition: all 0.3s ease;
+    filter: grayscale(20%);
+}
+
+.skill-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: grayscale(0%);
 }
 
 .top-container {
@@ -34,8 +117,9 @@ body {
 .cv-image {
     width: 200px;
     height: 200px;
-
     border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border: 4px solid rgba(255,255,255,0.8);
 }
 
 .remove-thumbnail-padding {
@@ -96,6 +180,98 @@ body {
 
 .company-image {
     width: 150px;
-    /* height: 200px; */
     max-height: 200px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.company-image:hover {
+    transform: scale(1.05);
+}
+
+/* Parallax effect for hero section */
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Progress bars for skills */
+.skill-progress {
+    height: 6px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Mobile responsiveness improvements */
+@media (max-width: 768px) {
+    .typing-text {
+        font-size: 1.5rem;
+    }
+    
+    .card:hover {
+        transform: none;
+    }
+    
+    .cv-image {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* Contact section hover effects */
+.hover-lift {
+    transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Enhanced navbar */
+.navbar {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Additional skill icon animations */
+.skill-icon {
+    transition: all 0.3s ease;
+    filter: grayscale(20%);
+}
+
+.skill-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: grayscale(0%);
+}
+
+/* Back to top button */
+#backToTop {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+#backToTop:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
